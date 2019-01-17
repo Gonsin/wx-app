@@ -1,0 +1,121 @@
+.header-area {
+  width: 100%;
+  height: 30%;
+  background-color: #ff5151;
+}
+
+.setting-area {
+  width: 100%;
+  height: 20%;
+  margin-top: 10px;
+  /* background-color: yellow; */
+}
+
+.setting-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 290px;
+  /* background: yellow; */
+}
+
+.setting-name {
+  font-size: 0.7rem;
+  margin-left: 10px;
+  /* background-color: orange; */
+}
+
+.user-area {
+  width: 100%;
+  height: 60%;
+  margin-top: 10px;
+  /* background-color: purple; */
+}
+
+.user-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 100rpx;
+    border: 2rpx solid black;
+  margin-left: 20px;
+}
+
+.user-info {
+  font-size: 0.8rem;
+  margin-left: 20px;
+  /* background-color: green; */
+}
+
+.recharge-button {
+  width: 20%;
+  height: 30%;
+  margin-right: 20px;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid #eb602e;
+  border-radius: 8rpx;
+}
+
+.scorll {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  position: relative;
+}
+
+.scorll scroll-view {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.area-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  /* background-color: blue; */
+}
+
+.list-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1px;
+  /* background-color: red; */
+}
+
+.item-datail {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1px;
+  background-color: #fff;
+}
+
+.item-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  /* background-color: yellow; */
+}
+
+.item-name {
+  font-size: 0.8rem;
+  margin-left: 20px;
+}
+
+.item-arrow {
+  width: 15px;
+  height: 15px;
+  margin-left: 200px;
+  /* background-color: orange; */
+}

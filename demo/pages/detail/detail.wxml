@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="target-area fx-col">
+    <text class="target-name">目标收益</text>
+    <view class="target-info fx-row">
+      <text class="target-value">{{targetValue}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+<!--person.wxml-->
+<view class="container">
+  <view class="header-area">
+    <view class="setting-area al-center">
+      <image class="setting-icon" src="../../src/setting-icon.png" />
+      <text class="setting-name">设置</text>
+    </view>
+    <view class="user-area al-center">
+      <image class="user-icon" src="../../src/user-icon.png" />
+      <view class="user-info fx-col">
+        <text class="user-name">Gonsin</text>
+        <text class="user-coin">余额: 18880元</text>
+      </view>
+      <button class="recharge-button" type="default" disabled="false" bindtap="rechargeCliked">充值 ></button>
+    </view>
+  </view>
+
+  <view class="page">
+    <view class="scorll">
+      <scroll-view style="height:100%;" scroll-y="true">
+        <view class="area-item" wx:for="{{areaList}}" wx:key="id">
+          <view class="list-item" wx:for="{{item.itemData}}" wx:key="id">
+            <view class="item-datail">
+              <image class="item-icon" src="../../src/item-icon.png" />
+              <text class="item-name ">{{item.name}}</text>
+              <image class="item-arrow " src="../../src/item-arrow.png" />
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+
+<!-- <template is="list-item" wx:for="{{areaItem.itemData}}" data="{{...item}}" wx:key="id"></template> -->
+
+<!--区域块模板  -->
+<template name="item-detail">
+  <!-- <image src="" /> -->
+  <text class="item-name ">{{item.name}}</text>
+  <!-- <image class="item-deail " src=" " /> -->
+</template>

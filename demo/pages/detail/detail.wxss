@@ -1,0 +1,29 @@
+.loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  background-color: transparent;
+}
+
+.target-area {
+  width: 100%;
+  height: 30%;
+  background-color: #ff5151;
+}
+
+.target-name {
+  font-size: 0.9rem;
+  background-color: yellow;
+}
+
+.target-info {
+  width: 100%;
+  height: 40%;
+  margin-top: 3%;
+  background-color: gray;
+}
+
+.target-value {
+  font-size: 1.3em;
+}

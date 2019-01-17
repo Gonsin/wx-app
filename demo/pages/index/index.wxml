@@ -1,0 +1,135 @@
+<!--index.wxml-->
+<view class="container">
+  <view hidden="{{!isLoading}}" class="loading">
+    <image src="../../src/load.png" />
+  </view>
+  <view class="flex-row head-nav al-center">
+    <view class="{{currentType == 'hot' ? 'type-selected' : ''}}" data-type="hot" bindtap="changeType">最新上架</view>
+    <text>|</text>
+    <view class="{{currentType == 'subscribe' ? 'type-selected' : ''}}" data-type="subscribe" bindtap="changeType">运行中</view>
+    <text>|</text>
+    <view class="{{currentType == 'special' ? 'type-selected' : ''}}" data-type="special" bindtap="changeType">已终止</view>
+  </view>
+  <!--hot-->
+  <view class="page" hidden="{{!(currentType=='hot')}}">
+    <view class="platform-nav">
+      <view class="platform-nav-item" data-index="0" data-platform="instagram" bindtap="changePlatform">计划状态</view>
+      <view class="platform-nav-item" data-index="1" data-platform="facebook" bindtap="changePlatform">排序</view>
+      <view class="platform-nav-item" data-index="2" data-platform="twitter" bindtap="changePlatform">最长时限</view>
+      <view class="platform-nav-item" data-index="3" data-platform="weibo" bindtap="changePlatform">操作风格</view>
+      <view class="nav-bar {{'hot-bar-left-'+platIndex}}">
+        <view></view>
+      </view>
+    </view>
+    <view class="scorll">
+      <scroll-view scroll-y="true">
+        <template is="hot-list-item" data="{{...item, playingId: playingId}}" wx:for="{{hotDataList}}" wx:key="{{index}}"></template>
+      </scroll-view>
+    </view>
+  </view>
+  <!--subscribe-->
+  <view class="page" hidden="{{!(currentType=='subscribe')}}">
+    <view class="platform-nav">
+      <view class="sub-nav-item" data-index="0" data-platform="all" bindtap="changeSubscribe">全部</view>
+      <view class="sub-nav-item" data-index="1" data-platform="test" bindtap="changeSubscribe">测试</view>
+      <view class="nav-bar {{'sub-bar-left-'+platIndex}}">
+        <view></view>
+      </view>
+    </view>
+    <view class="scorll">
+      <scroll-view style="height:100%;" scroll-y="true">
+        <template is="sub-list-item" data="{{...item, playingId: playingId}}" wx:for="{{subDataList}}" wx:key="{{index}}"></template>
+      </scroll-view>
+    </view>
+  </view>
+  <!--special-->
+  <view class="page" hidden="{{!(currentType=='special')}}">
+    <view class="scorll">
+      <scroll-view style="height:100%;" scroll-y="true">
+        <template is="special-list-item" data="{{...item}}" wx:for="{{specialDataList}}" wx:key="{{index}}"></template>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+
+<!--热门list-->
+<template name="hot-list-item">
+  <view class="hot-list-item">
+    <view class="hot-list-header">
+      <view class="hot-author-area al-center">
+        <image mode="header-icon" class="hot-author-icon" src="{{author.avatar}}" />
+        <text class="hot-author-name">{{author.nickname}}</text>
+      </view>
+      <view class="hot-grade-area al-center">
+        <text class="hot-grade-desc">{{gradeIncome.desc}} : {{gradeIncome.ratio}}</text>
+      </view>
+      <view class="hot-shading"></view>
+    </view>
+    <view class="hot-list-body fx-row" bindtap="checkDetail">
+      <view class="hot-income-area fx-col">
+        <text class="hot-incomeRatio">{{fundInfo.income}}</text>
+        <text class="hot-incomeInfo">目标收益</text>
+      </view>
+      <view class="hot-info-area fx-col">
+        <text class="hot-fundName">{{fundInfo.fundName}}</text>
+        <text class="hot-styleType">{{fundInfo.styleType}}</text>
+        <text class="hot-runtime">{{fundInfo.startTime}}</text>
+        <view class="hot-bottom-area al-center">
+          <text class="hot-status">{{fundInfo.status}}</text>
+          <button class="hot-buyButton" type="default" disabled="true" bindtap="buyPlan">立即抢购</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="hot-image">
+  <image class="media" src="{{imageSpec[0].url}}" style="height: {{imageSpec[0].height/imageSpec[0].width*20}}rem" />
+</template>
+
+<!--订阅list-->
+<template name="sub-list-item">
+  <view class="sub-list-item">
+    <view class="sub-list-header">
+      <view class="sub-author-area al-center">
+        <image mode="header-icon" class="sub-author-icon" src="{{author.avatar}}" />
+        <text class="sub-author-name">{{author.nickname}}</text>
+      </view>
+      <view class="sub-grade-area al-center">
+        <text class="sub-grade-desc">{{gradeIncome.desc}} : {{gradeIncome.ratio}}</text>
+      </view>
+      <view class="sub-shading"></view>
+    </view>
+    <view class="sub-list-body fx-col">
+      <view class="sub-first-list al-center">
+        <text class="sub-incomeRatio">{{fundInfo.income}}</text>
+        <text class="sub-fundName">{{fundInfo.fundName}}</text>
+      </view>
+      <view class="sub-second-list al-center">
+        <text class="sub-incomeInfo">当前收益</text>
+        <text class="sub-styleType">{{fundInfo.styleType}}</text>
+      </view>
+      <view class="sub-third-list al-center">
+        <text class="sub-marketIndex">{{fundInfo.marketIndex}}</text>
+        <text class="sub-target">{{fundInfo.target}}</text>
+        <image class="sub-dialog-icon" src="{{author.avatar}}" />
+        <text class="sub-dialog">{{fundInfo.dialog}}</text>
+      </view>
+    </view>
+    <view class="sub-list-footer fx-col">
+      <progress class="sub-progress" percent="40" stroke-width="6" color="red" />
+      <view class="sub-runtimeArea al-center">
+        <text class="sub-runtimeTitle">运行时间</text>
+        <text class="sub-runtimeText">{{fundInfo.runtimeText}}</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--专题list-->
+<template name="special-list-item">
+  <view class="special-list-item">
+    <image class="fx-row" mode="aspectFill" src="{{trendingCoverUrl}}" />
+    <text class="special-title">{{trendingTitle}}</text>
+  </view>
+</template>
